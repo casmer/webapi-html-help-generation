@@ -9,7 +9,7 @@ namespace WebApiHelpPageGenerator
 {
     public class DefaultOutputGenerator : IOutputGenerator
     {
-        private const string fileName = "HelpPage.html";
+        private const string fileName = "Index.html";
         public string basePath { get; set; }
 
 
@@ -46,10 +46,12 @@ namespace WebApiHelpPageGenerator
             WriteFile(apiModel.ApiDescription.GetFriendlyId() + ".html", helpPage);
         }
 
-        private static void WriteFile(string fileName, String pageContent)
+        private void WriteFile(string fileName, String pageContent)
         {
             Console.WriteLine("writing file: {0}", fileName);
-            File.WriteAllText(fileName, pageContent);
+          if (!Directory.Exists(basePath))
+            Directory.CreateDirectory(basePath);
+            File.WriteAllText(Path.Combine(basePath, fileName), pageContent);
         }
     }
 }
