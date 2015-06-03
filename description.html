@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head><link rel="stylesheet" type="text/css" href="description/Combined.css,0:HeaderFooterSprite,0:Header.NonMtps,1:LinkList;/Areas/Centers/Themes/StandardDevCenter/Content:0,/Areas/Epx/Themes/Base/Content:1&amp;amp;hashKey=C9973DA951AE6202C9B348379A1BE49D" xmlns="http://www.w3.org/1999/xhtml" />
+<link type="text/css" rel="stylesheet" xmlns="http://www.w3.org/1999/xhtml" />
+<link rel="stylesheet" type="text/css" href="description/a7d1e078-8570-47da-a87b-ff462dfc958dCombined.css,0:HeaderFooterSprite,0:Footer.NonMtps,1:LinkList;/Areas/Centers/Themes/StandardDevCenter/Content:0,/Areas/Epx/Themes/Base/Content:1&amp;amp;hashKey=F576C687BC536B84D6E5B3246EE39B49" xmlns="http://www.w3.org/1999/xhtml" />
+<link type="text/css" rel="stylesheet" xmlns="http://www.w3.org/1999/xhtml" />
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Design-time help page generator for ASP.NET Web API</title>
+        <link href="description/Galleries.css" type="text/css" rel="Stylesheet" /><link href="description/Layout.css" type="text/css" rel="Stylesheet" /><link href="description/Brand.css" type="text/css" rel="Stylesheet" />
+        <link href="description/iframedescription.css" rel="Stylesheet" type="text/css" />
+        <script src="description/offline.js" type="text/javascript"></script>
+        <style type="text/css">
+            #projectInfo {
+                overflow: auto;
+            }
+            #longDesc {
+                clear:both;
+                margin: 25px 0 10px 0;
+            }
+
+            #SampleIndexList{
+                margin-left: 15px;
+            }
+        </style>
+    </head>
+<body>
+    <div id="offlineDescription">
+        <h1>Design-time help page generator for ASP.NET Web API</h1>
+        <br/>
+        <div id="projectInfo">
+            <div class="section">
+                    <div class="itemBarLong tagsContainer">
+                        <label for="Technologies">Technologies</label>
+                        <div id="Technologies">
+                            ASP.NET, ASP.NET Web API
+                        </div>
+                    </div>
+                    <div class="itemBarLong tagsContainer">
+                        <label for="Topics">Topics</label>
+                        <div id="Topics">
+                            ASP.NET Web API, Web API
+                        </div>
+                    </div>
+                <div class="itemBarLong">
+                    <label for="Platforms">Platforms</label>
+                    <div id="Platforms">
+                        Web
+                    </div>
+                </div>
+                <div class="itemBarLong">
+                    <label for="Requirements">Requirements</label>
+                    <div id="Requirements">
+                        NuGet Package Manager
+                    </div>
+                </div>
+                <div class="itemBar">
+                    <label for="LastUpdated">Primary language</label>
+                    <div id="LastUpdated">en-US</div>
+                </div>
+                <div class="itemBar">
+                    <label for="LastUpdated">Updated</label>
+                    <div id="LastUpdated">4/29/2013</div>
+                </div>
+                <div class="itemBarLong">
+                    <label for="License">License</label>
+                    <div id="License">
+                        <a href="license.rtf">Apache License, Version 2.0</a></div>
+                </div>
+                <div class="itemBar">
+                    <div class="viewonlinecont">
+                        <a data-link="online" href="http://code.msdn.microsoft.com/Design-time-help-page-3048fb43">View this sample online</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+                   
+<script type="text/javascript">
+    function initializePage() {
+        var otherTabClass = 'otherTab';
+        var hiddenPreClass = 'hidden';
+
+        var htmlDecode = function(encodedData) {
+            var decodedData = "";
+            if (encodedData) {
+                var div = document.createElement('div');
+                div.innerHTML = encodedData;
+                decodedData = div.firstChild.nodeValue.replace( /\\r\\n/ig , '\r\n');
+            }
+            return decodedData;
+        };
+                
+        Galleries.iterateElem(Galleries.findElem(null, 'div', 'scriptcode'), function (index, scriptBlock) {
+            var titleElem = Galleries.findElem(scriptBlock, 'div', 'title')[0];
+            var labelElems = Galleries.findElem(titleElem, 'span');
+            if (labelElems.length == 0) {
+                labelElems = titleElem;
+            }
+            var languageSpans = Galleries.findElem(scriptBlock, 'span', 'hidden');
+            var pres = Galleries.findElem(scriptBlock, 'pre');
+            if (languageSpans.length > 0 && pres.length > 1) {
+                Galleries.iterateElem(labelElems, function(index, elem) {
+                    var codePre = pres[index];
+                    var labelSpan = elem;
+                    var languageSpan = languageSpans[index];
+                            
+                    elem.code = codePre.innerHTML.replace( /(\r(\n)?)|((\r)?\n)/ig , '\\r\\n');
+                            
+                    codePre.className = codePre.className.replace(hiddenPreClass, '');
+                            
+                    languageSpan.parentNode.removeChild(languageSpan);
+                });
+
+                pres = Galleries.findElem(scriptBlock, 'pre');
+                Galleries.iterateElem(labelElems, function(index, elem) {
+                    var codePre = pres[index];
+                    var labelSpan = elem;
+                    if (index == 0) {
+                        scriptBlock.activeTab = 0;
+                    }
+                    else {
+                        labelSpan.className += otherTabClass;
+                        codePre.className += hiddenPreClass;
+                    }
+                    Galleries.attachEventHandler(labelSpan, 'click', function(e) {
+                        var activeTab = scriptBlock.activeTab;
+                        labelElems[activeTab].className += otherTabClass;
+                        pres[activeTab].className += hiddenPreClass;
+
+                        codePre.className = codePre.className.replace(hiddenPreClass, '');
+                        labelSpan.className = labelSpan.className.replace(otherTabClass, '');
+                        scriptBlock.activeTab = index;
+                    });
+                });
+
+                var preview = Galleries.findElem(scriptBlock, 'div', 'preview');
+                if (preview.length == 0) {
+                    preview.push(pres[pres.length - 1]);
+                }
+                Galleries.iterateElem(preview, function(index, elem) {
+                    elem.parentNode.removeChild(elem);
+                });
+
+                if (window.clipboardData && clipboardData.setData) {
+                    var copyLink = document.createElement('a');
+                    copyLink.href = 'javascript:void(0);';
+                    copyLink.className = 'copyCode';
+                    copyLink.innerHTML = 'Copy code';
+                    Galleries.attachEventHandler(copyLink, 'click', function (e) {
+                        clipboardData.setData("Text", htmlDecode(labelElems[scriptBlock.activeTab].code));
+                        return false;
+                    });
+                    scriptBlock.insertBefore(copyLink, scriptBlock.childNodes[0]);
+                }
+            }
+        });
+    }
+
+    Galleries.onWindowLoad(function(){
+        initializePage();
+    });
+
+</script>
+<div id="longDesc">
+    
+<div>This a simple command-line utility that will generate the help page as HTML files for ASP.NET Web API. See this
+<a href="http://blogs.msdn.com/b/yaohuang1/archive/2013/01/20/design-time-generation-of-help-page-or-proxy-for-asp-net-web-api.aspx">
+blog </a>for more information.</div>
+<div></div>
+<h1>Using the WebApiHelpPageGenerator.exe</h1>
+<div>The WebApiHelpPageGenerator.exe takes one required parameter (-p) which is the path to your application assembly.</div>
+<blockquote>
+<div>WebApiHelpPageGenerator.exe -p MvcApplication1.dll</div>
+</blockquote>
+<div>You do need to follow a convention in order to opt-in: Having a public static &ldquo;WebApiConfig&rdquo; class with a static &ldquo;Register&rdquo; method where the API routes are specified. This is the pattern that we have in the default Web API templates.</div>
+<div>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>C#</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">csharp</span>
+<pre class="hidden">public static class WebApiConfig
+{
+    public static void Register(HttpConfiguration config)
+    {
+        config.Routes.MapHttpRoute(
+            name: &quot;DefaultApi&quot;,
+            routeTemplate: &quot;api/{controller}/{id}&quot;,
+            defaults: new { id = RouteParameter.Optional }
+        );
+    }
+}</pre>
+<div class="preview">
+<pre class="csharp"><span class="cs__keyword">public</span>&nbsp;<span class="cs__keyword">static</span>&nbsp;<span class="cs__keyword">class</span>&nbsp;WebApiConfig&nbsp;
+{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">public</span>&nbsp;<span class="cs__keyword">static</span>&nbsp;<span class="cs__keyword">void</span>&nbsp;Register(HttpConfiguration&nbsp;config)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config.Routes.MapHttpRoute(&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;<span class="cs__string">&quot;DefaultApi&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;routeTemplate:&nbsp;<span class="cs__string">&quot;api/{controller}/{id}&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;defaults:&nbsp;<span class="cs__keyword">new</span>&nbsp;{&nbsp;id&nbsp;=&nbsp;RouteParameter.Optional&nbsp;}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+}</pre>
+</div>
+</div>
+</div>
+<div class="endscriptcode">If everything goes well, you will see the following HTML files generated.</div>
+<div class="endscriptcode">&nbsp;</div>
+</div>
+<div><a href="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-52-84-metablogapi/2570.image_5F00_440A42B3.png"><img title="image" src="description/1106.image_thumb_78AA9EEE.png" border="0" alt="image" width="554" height="281" style="border-width:0px; padding-top:0px; padding-right:0px; padding-left:0px; display:inline"></a></div>
+<div>&nbsp;</div>
+<div>You can open the HTML files and even browse through them locally.</div>
+<div>&nbsp;</div>
+<div><a href="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-52-84-metablogapi/3678.image_5F00_6A6C25FE.png"><img title="image" src="description/8865.image_thumb_2316D00C.png" border="0" alt="image" width="554" height="387" style="border-width:0px; padding-top:0px; padding-right:0px; padding-left:0px; display:inline"></a></div>
+<div>&nbsp;</div>
+<div>Clicking on &ldquo;GET api/Values&rdquo; will take you to the &ldquo;GET-api-values.html&rdquo;.</div>
+<div>&nbsp;</div>
+<div><a href="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-52-84-metablogapi/6886.image_5F00_425976DF.png"><img title="image" src="description/3678.image_thumb_3010B01D.png" border="0" alt="image" width="554" height="387" style="border-width:0px; padding-top:0px; padding-right:0px; padding-left:0px; display:inline"></a></div>
+<h2>Including Controllers from different assembly</h2>
+<div>Very often you can have the controllers defined on different assemblies. In order to get all of them, simply use the -r flag.</div>
+<blockquote>
+<div>WebApiHelpPageGenerator.exe -p MvcApplication1.dll &ndash;r ControllerLibrary1.dll ControllerLibrary2.dll</div>
+</blockquote>
+<div><a href="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-52-84-metablogapi/8816.image_5F00_3EA90CEB.png"><img title="image" src="description/2161.image_thumb_5E57E6B3.png" border="0" alt="image" width="554" height="281" style="border:0px currentColor; padding-top:0px; padding-right:0px; padding-left:0px; display:inline"></a></div>
+<h2>Generating proxy or other types of documentation</h2>
+<div>You can extend the WebApiHelpPageGenerator.exe to generate proxy/client or other types of documentation.</div>
+<div>To do this, first you need to add the reference to WebApiHelpPageGenerator.exe.</div>
+<div>&nbsp;</div>
+<div><a href="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-52-84-metablogapi/8422.image_5F00_1E21CD39.png"><img title="image" src="description/5873.image_thumb_5DEBB3BE.png" border="0" alt="image" width="554" height="167" style="border:0px currentColor; padding-top:0px; padding-right:0px; padding-left:0px; display:inline"></a></div>
+<div>&nbsp;</div>
+<div>Then, implement the IOutputGenerator. For illustration I simply printed things out to the console but you can use it with a templating engine to generate fancier documentation for your web API.</div>
+<div>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>C#</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">csharp</span>
+<pre class="hidden">using System;
+using WebApiHelpPageGenerator;
+
+namespace MyExtension
+{
+    public class MyOutputGenerator : IOutputGenerator
+    {
+        public void GenerateIndex(System.Collections.ObjectModel.Collection&lt;System.Web.Http.Description.ApiDescription&gt; apis)
+        {
+            Console.WriteLine(&quot;Generating index.&quot;);
+        }
+
+        public void GenerateApiDetails(WebApiHelpPage.Models.HelpPageApiModel apiModel)
+        {
+            Console.WriteLine(&quot;Generating something for {0}&quot;, apiModel.ApiDescription.ID);
+        }
+    }
+}</pre>
+<div class="preview">
+<pre class="js">using&nbsp;System;&nbsp;
+using&nbsp;WebApiHelpPageGenerator;&nbsp;
+&nbsp;
+namespace&nbsp;MyExtension&nbsp;
+<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;MyOutputGenerator&nbsp;:&nbsp;IOutputGenerator&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;<span class="js__operator">void</span>&nbsp;GenerateIndex(System.Collections.ObjectModel.Collection&lt;System.Web.Http.Description.ApiDescription&gt;&nbsp;apis)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(<span class="js__string">&quot;Generating&nbsp;index.&quot;</span>);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__brace">}</span>&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;<span class="js__operator">void</span>&nbsp;GenerateApiDetails(WebApiHelpPage.Models.HelpPageApiModel&nbsp;apiModel)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(<span class="js__string">&quot;Generating&nbsp;something&nbsp;for&nbsp;{0}&quot;</span>,&nbsp;apiModel.ApiDescription.ID);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__brace">}</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__brace">}</span>&nbsp;
+<span class="js__brace">}</span></pre>
+</div>
+</div>
+</div>
+<div class="endscriptcode">&nbsp;Next, just use the -e option to load the assembly where the custom IOutputGenerator is defined.</div>
+</div>
+<blockquote>
+<div>WebApiHelpPageGenerator.exe -p MvcApplication1.dll -e MyExtension.dll</div>
+</blockquote>
+<div><a href="http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-blogs-components-weblogfiles/00-00-01-52-84-metablogapi/3582.image_5F00_403C7816.png"><img title="image" src="description/8446.image_thumb_391D3B9E.png" border="0" alt="image" width="554" height="281" style="border:0px currentColor; padding-top:0px; padding-right:0px; padding-left:0px; display:inline"></a></div>
+<div></div>
+<div>
+<p><span style="text-decoration:underline">Update</span></p>
+<p>I&rsquo;ve implemented a custom IOutputGenerator that will generate a simple JavaScript client (see WebApiJsClientGenerator.csproj).</p>
+<p>To try it, simply use the -e option.</p>
+<blockquote>
+<p>WebApiHelpPageGenerator.exe -p MvcApplication1.dll -e WebApiJsClientGenerator.dll</p>
+</blockquote>
+<p>It will spit out a file that look like this:</p>
+<p></p>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>JavaScript</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">js</span>
+<pre class="hidden">function GetUsers(id) {
+    return $.ajax({
+        url: &quot;/api/Users/&quot; &#43; id,
+        type: &quot;GET&quot;});
+}
+ 
+function PostUsers(user) {
+    return $.ajax({
+        url: &quot;/api/Users&quot;,
+        type: &quot;POST&quot;,
+        contentType: &quot;application/json&quot;,
+        data: JSON.stringify(user)});
+}
+ 
+function GetValues() {
+    return $.ajax({
+        url: &quot;/api/Values&quot;,
+        type: &quot;GET&quot;});
+}
+ 
+function GetValues1(id) {
+    return $.ajax({
+        url: &quot;/api/Values/&quot; &#43; id,
+        type: &quot;GET&quot;});
+}
+ 
+function PostValues(value) {
+    return $.ajax({
+        url: &quot;/api/Values&quot;,
+        type: &quot;POST&quot;,
+        contentType: &quot;application/json&quot;,
+        data: JSON.stringify(value)});
+}
+ 
+function PutValues(id, value) {
+    return $.ajax({
+        url: &quot;/api/Values/&quot; &#43; id,
+        type: &quot;PUT&quot;,
+        contentType: &quot;application/json&quot;,
+        data: JSON.stringify(value)});
+}
+ 
+function DeleteValues(id) {
+    return $.ajax({
+        url: &quot;/api/Values/&quot; &#43; id,
+        type: &quot;DELETE&quot;});
+}</pre>
+<div class="preview">
+<pre class="js"><span class="js__operator">function</span>&nbsp;GetUsers(id)&nbsp;<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__statement">return</span>&nbsp;$.ajax(<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;<span class="js__string">&quot;/api/Users/&quot;</span>&nbsp;&#43;&nbsp;id,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;<span class="js__string">&quot;GET&quot;</span><span class="js__brace">}</span>);&nbsp;
+<span class="js__brace">}</span>&nbsp;
+&nbsp;&nbsp;
+<span class="js__operator">function</span>&nbsp;PostUsers(user)&nbsp;<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__statement">return</span>&nbsp;$.ajax(<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;<span class="js__string">&quot;/api/Users&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;<span class="js__string">&quot;POST&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contentType:&nbsp;<span class="js__string">&quot;application/json&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;JSON.stringify(user)<span class="js__brace">}</span>);&nbsp;
+<span class="js__brace">}</span>&nbsp;
+&nbsp;&nbsp;
+<span class="js__operator">function</span>&nbsp;GetValues()&nbsp;<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__statement">return</span>&nbsp;$.ajax(<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;<span class="js__string">&quot;/api/Values&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;<span class="js__string">&quot;GET&quot;</span><span class="js__brace">}</span>);&nbsp;
+<span class="js__brace">}</span>&nbsp;
+&nbsp;&nbsp;
+<span class="js__operator">function</span>&nbsp;GetValues1(id)&nbsp;<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__statement">return</span>&nbsp;$.ajax(<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;<span class="js__string">&quot;/api/Values/&quot;</span>&nbsp;&#43;&nbsp;id,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;<span class="js__string">&quot;GET&quot;</span><span class="js__brace">}</span>);&nbsp;
+<span class="js__brace">}</span>&nbsp;
+&nbsp;&nbsp;
+<span class="js__operator">function</span>&nbsp;PostValues(value)&nbsp;<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__statement">return</span>&nbsp;$.ajax(<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;<span class="js__string">&quot;/api/Values&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;<span class="js__string">&quot;POST&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contentType:&nbsp;<span class="js__string">&quot;application/json&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;JSON.stringify(value)<span class="js__brace">}</span>);&nbsp;
+<span class="js__brace">}</span>&nbsp;
+&nbsp;&nbsp;
+<span class="js__operator">function</span>&nbsp;PutValues(id,&nbsp;value)&nbsp;<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__statement">return</span>&nbsp;$.ajax(<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;<span class="js__string">&quot;/api/Values/&quot;</span>&nbsp;&#43;&nbsp;id,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;<span class="js__string">&quot;PUT&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contentType:&nbsp;<span class="js__string">&quot;application/json&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;JSON.stringify(value)<span class="js__brace">}</span>);&nbsp;
+<span class="js__brace">}</span>&nbsp;
+&nbsp;&nbsp;
+<span class="js__operator">function</span>&nbsp;DeleteValues(id)&nbsp;<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="js__statement">return</span>&nbsp;$.ajax(<span class="js__brace">{</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;<span class="js__string">&quot;/api/Values/&quot;</span>&nbsp;&#43;&nbsp;id,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;<span class="js__string">&quot;DELETE&quot;</span><span class="js__brace">}</span>);&nbsp;
+<span class="js__brace">}</span></pre>
+</div>
+</div>
+</div>
+<div class="endscriptcode">&nbsp;</div>
+<p></p>
+</div>
+<div>&nbsp;</div>
+
+</div>
+
+
+    </div>
+</body>
+</html>

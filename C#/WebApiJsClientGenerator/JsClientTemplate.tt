@@ -1,0 +1,48 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ import namespace="System.Web.Http.Description" #>
+<#@ import namespace="System.Web.Http.Controllers" #>
+<#@ import namespace="System.Collections.ObjectModel" #>
+<#@ import namespace="System.Web.Http" #>
+<#@ import namespace="System.Web" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Threading" #>
+<#@ import namespace="System.Net.Http.Headers" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#
+	HashSet<string> functionNames = new HashSet<string>();
+#>
+<# foreach (var api in Apis)
+{ #>
+<# if(api.Documentation != null)
+{#>
+// <#=api.Documentation#>
+<# } #>
+<#
+	var bodyParameter = api.ParameterDescriptions.Where(p => p.Source == System.Web.Http.Description.ApiParameterSource.FromBody).FirstOrDefault();
+    string bodyParameterName = null;
+    if (bodyParameter != null)
+    {
+        bodyParameterName = bodyParameter.Name;
+    }
+    var parameterNames = api.ParameterDescriptions.Select(p => p.Name);
+    string parameterList = String.Join(", ", parameterNames);
+	string url = String.Format("\"/{0}\"", api.RelativePath).Replace("{", "\" + ").Replace("}", " + \"").Replace(" + \"\"", "");
+	string defaultFunctionName = api.ActionDescriptor.ActionName+api.ActionDescriptor.ControllerDescriptor.ControllerName;
+	int index = 1;
+	string functionName = defaultFunctionName;
+	while(functionNames.Contains(functionName))
+	{
+		functionName = defaultFunctionName+index;
+		index++;
+	}
+	functionNames.Add(functionName);
+#>
+function <#=functionName#>(<#=parameterList#>) {
+    return $.ajax({
+        url: <#=url#>,
+        type: "<#=api.HttpMethod.Method#>"<#if(bodyParameterName!=null){#>,
+        contentType: "application/json",
+        data: JSON.stringify(<#=bodyParameterName#>)<#}#>});
+}
+
+<# } #>

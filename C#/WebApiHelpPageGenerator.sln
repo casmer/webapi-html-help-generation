@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiHelpPageGenerator", "WebApiHelpPageGenerator\WebApiHelpPageGenerator.csproj", "{05A4E8CF-06A5-4630-8D50-04447FD62EEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EFF946D6-77AA-4E69-9F92-7073DAB68F34}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiJsClientGenerator", "WebApiJsClientGenerator\WebApiJsClientGenerator.csproj", "{D2ECDAB0-E17D-4152-B4AA-B3CA53180763}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05A4E8CF-06A5-4630-8D50-04447FD62EEC}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{05A4E8CF-06A5-4630-8D50-04447FD62EEC}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{05A4E8CF-06A5-4630-8D50-04447FD62EEC}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{05A4E8CF-06A5-4630-8D50-04447FD62EEC}.Debug|x86.ActiveCfg = Debug|x86
+		{05A4E8CF-06A5-4630-8D50-04447FD62EEC}.Debug|x86.Build.0 = Debug|x86
+		{05A4E8CF-06A5-4630-8D50-04447FD62EEC}.Release|Any CPU.ActiveCfg = Release|x86
+		{05A4E8CF-06A5-4630-8D50-04447FD62EEC}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{05A4E8CF-06A5-4630-8D50-04447FD62EEC}.Release|Mixed Platforms.Build.0 = Release|x86
+		{05A4E8CF-06A5-4630-8D50-04447FD62EEC}.Release|x86.ActiveCfg = Release|x86
+		{05A4E8CF-06A5-4630-8D50-04447FD62EEC}.Release|x86.Build.0 = Release|x86
+		{D2ECDAB0-E17D-4152-B4AA-B3CA53180763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2ECDAB0-E17D-4152-B4AA-B3CA53180763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2ECDAB0-E17D-4152-B4AA-B3CA53180763}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D2ECDAB0-E17D-4152-B4AA-B3CA53180763}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D2ECDAB0-E17D-4152-B4AA-B3CA53180763}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D2ECDAB0-E17D-4152-B4AA-B3CA53180763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2ECDAB0-E17D-4152-B4AA-B3CA53180763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2ECDAB0-E17D-4152-B4AA-B3CA53180763}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D2ECDAB0-E17D-4152-B4AA-B3CA53180763}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D2ECDAB0-E17D-4152-B4AA-B3CA53180763}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
