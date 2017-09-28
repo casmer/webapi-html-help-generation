@@ -30,8 +30,10 @@ namespace WebApiHelpPageGenerator
                     foreach (var api in descriptions)
                     {
                         HelpPageSampleGenerator sampleGenerator = config.GetHelpPageSampleGenerator();
-                        HelpPageApiModel apiModel = HelpPageConfigurationExtensions.GenerateApiModel(api, sampleGenerator);
-                        if (apiModel != null)
+                        //HelpPageApiModel apiModel = HelpPageConfigurationExtensions.GenerateApiModel(api, sampleGenerator);
+						HelpPageApiModel apiModel = HelpPageConfigurationExtensions.GetHelpPageApiModel(config, api.GetFriendlyId());
+
+						if (apiModel != null)
                         {
                             outputGenerator.GenerateApiDetails(apiModel);
                         }
@@ -41,7 +43,9 @@ namespace WebApiHelpPageGenerator
             catch (Exception e)
             {
                 Console.WriteLine("Error: {0}", e.Message);
+
             }
+
         }
 
         private static IOutputGenerator LoadOutputGenerator(CommandLineOptions options)
