@@ -25,17 +25,16 @@ namespace WebApiHelpPageGenerator
                     Collection<ApiDescription> descriptions = config.Services.GetApiExplorer().ApiDescriptions;
                     IOutputGenerator outputGenerator = LoadOutputGenerator(options);
                   
-                    outputGenerator.GenerateIndex(descriptions);
+                    outputGenerator.GenerateIndex(descriptions, options);
 
                     foreach (var api in descriptions)
                     {
                         HelpPageSampleGenerator sampleGenerator = config.GetHelpPageSampleGenerator();
-                        //HelpPageApiModel apiModel = HelpPageConfigurationExtensions.GenerateApiModel(api, sampleGenerator);
 						HelpPageApiModel apiModel = HelpPageConfigurationExtensions.GetHelpPageApiModel(config, api.GetFriendlyId());
 
 						if (apiModel != null)
                         {
-                            outputGenerator.GenerateApiDetails(apiModel);
+                            outputGenerator.GenerateApiDetails(apiModel, options);
                         }
                     }
                 }

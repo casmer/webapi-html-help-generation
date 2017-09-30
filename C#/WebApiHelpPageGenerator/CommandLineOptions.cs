@@ -4,18 +4,21 @@ using CommandLine.Infrastructure;
 
 namespace WebApiHelpPageGenerator
 {
-    internal class CommandLineOptions
+    public class CommandLineOptions
     {
-        [Option('p', null, Required = true, HelpText = "Path to the assembly where the Web APIs are defined.")]
+        [Option('p', "path", Required = true, HelpText = "Path to the assembly where the Web APIs are defined.")]
         public string AssemblyPath { get; set; }
 
-        [OptionArray('r', null, DefaultValue = new string[0], HelpText = "Additional assembly references.")]
+        [OptionArray('r', "references", DefaultValue = new string[0], HelpText = "Additional assembly references.")]
         public string[] References { get; set; }
 
-        [Option('e', null, HelpText = "Path to the assembly where the extensions are defined.")]
+        [Option('e', "extensions", HelpText = "Path to the assembly where the extensions are defined.")]
         public string ExtensionAssemblyPath { get; set; }
 
-        [HelpOption]
+		[OptionArray('s',"stylesheets", HelpText = "URL of style sheets to include, prefer relative paths such as ../styles.css")]
+		public string[] StyleSheets { get; set; }
+
+		[HelpOption]
         public string GetUsage()
         {
             return HelpText.AutoBuild(this, (HelpText current) => HelpText.DefaultParsingErrorsHandler(this, current));

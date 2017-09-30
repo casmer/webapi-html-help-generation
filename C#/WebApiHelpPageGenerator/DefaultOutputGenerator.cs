@@ -21,26 +21,28 @@ namespace WebApiHelpPageGenerator
       {
         
       }
-        public void GenerateIndex(Collection<ApiDescription> apis)
+        public void GenerateIndex(Collection<ApiDescription> apis, CommandLineOptions options)
         {
-            Index indexTemplate = new Index
-            {
-                Model = apis,
-                ApiLinkFactory = apiName =>
-                {
-                    return apiName + ".html";
-                }
+			Index indexTemplate = new Index
+			{
+				Model = apis,
+				ApiLinkFactory = apiName =>
+				{
+					return apiName + ".html";
+				},
+				Options = options
             };
             string helpPageIndex = indexTemplate.TransformText();
             WriteFile(fileName, helpPageIndex);
         }
 
-        public void GenerateApiDetails(HelpPageApiModel apiModel)
+        public void GenerateApiDetails(HelpPageApiModel apiModel, CommandLineOptions options)
         {
             Api apiTemplate = new Api
             {
                 Model = apiModel,
-                HomePageLink = fileName
+                HomePageLink = fileName,
+				Options = options
             };
             string helpPage = apiTemplate.TransformText();
             WriteFile(apiModel.ApiDescription.GetFriendlyId() + ".html", helpPage);

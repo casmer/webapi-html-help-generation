@@ -18,6 +18,9 @@
 	<style type="text/css">
 		<#@ include file="HelpPage.css" #>
 	</style>
+	<# foreach(string style in Options.StyleSheets) {#>
+		<link rel="stylesheet" href="<#=style#>" />
+	<# } #>
 </head>
 <body>
 <header>

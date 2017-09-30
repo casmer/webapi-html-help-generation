@@ -10,11 +10,11 @@ namespace WebApiJsClientGenerator
 {
     public class JsClientGenrator : IOutputGenerator
     {
-        public void GenerateApiDetails(WebApiHelpPage.Models.HelpPageApiModel apiModel)
+        public void GenerateApiDetails(WebApiHelpPage.Models.HelpPageApiModel apiModel, CommandLineOptions options)
         {
         }
 
-        public void GenerateIndex(System.Collections.ObjectModel.Collection<System.Web.Http.Description.ApiDescription> apis)
+        public void GenerateIndex(System.Collections.ObjectModel.Collection<System.Web.Http.Description.ApiDescription> apis, CommandLineOptions options)
         {
             JsClientTemplate jsClientTemplate = new JsClientTemplate
             {
