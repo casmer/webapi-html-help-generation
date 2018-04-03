@@ -16,7 +16,9 @@ namespace WebApiHelpPageGenerator
             var options = new CommandLineOptions();
             try
             {
-                if (CommandLine.Parser.Default.ParseArguments(args, options))
+				bool success = CommandLine.Parser.Default.ParseArguments(args, options);
+
+				if (true)
                 {
                     LoadReferences(options);
 
@@ -41,8 +43,8 @@ namespace WebApiHelpPageGenerator
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: {0}", e.Message);
-
+                Console.WriteLine("Error: {0}\n{1}", e.Message, e.StackTrace);
+				Environment.Exit(-1);
             }
 
         }

@@ -26,7 +26,7 @@ namespace WebApiHelpPage
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
+    #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class Api : ApiBase
     {
@@ -36,8 +36,20 @@ namespace WebApiHelpPage
         /// </summary>
         public virtual string TransformText()
         {
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
+            this.Write("\n");
             
-            #line 13 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
 
     var description = Model.ApiDescription;
     var title = description.HttpMethod.Method + " " + description.RelativePath;
@@ -45,68 +57,67 @@ namespace WebApiHelpPage
             
             #line default
             #line hidden
-            this.Write("\r\n<html>\r\n<head>\r\n    <title>");
+            this.Write("\n\n<html>\n<head>\n    <title>");
             
-            #line 20 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(title));
             
             #line default
             #line hidden
-            this.Write("</title>\r\n\t<style type=\"text/css\">\r\n\t\t");
-            this.Write("pre.wrapped {\r\n    white-space: -moz-pre-wrap;\r\n    white-space: -pre-wrap;\r\n    " +
-                    "white-space: -o-pre-wrap;\r\n    white-space: pre-wrap;\r\n}\r\n\r\n.warning-message-con" +
-                    "tainer {\r\n    margin-top: 20px;\r\n    padding: 0 10px;\r\n    color: #525252;\r\n    " +
-                    "background: #EFDCA9;\r\n    border: 1px solid #CCCCCC;\r\n}\r\n\r\n.help-page-table {\r\n " +
-                    "   width: 100%;\r\n    border-collapse: collapse;\r\n    text-align: left;\r\n    marg" +
-                    "in: 0px 0px 20px 0px;\r\n    border-top: 2px solid #D4D4D4;\r\n}\r\n\r\n    .help-page-t" +
-                    "able th {\r\n        text-align: left;\r\n        font-weight: bold;\r\n        border" +
-                    "-bottom: 2px solid #D4D4D4;\r\n        padding: 8px 6px 8px 6px;\r\n    }\r\n\r\n    .he" +
-                    "lp-page-table td {\r\n        border-bottom: 2px solid #D4D4D4;\r\n        padding: " +
-                    "15px 8px 15px 8px;\r\n        vertical-align: top;\r\n    }\r\n\r\n    .help-page-table " +
-                    "pre, .help-page-table p {\r\n        margin: 0px;\r\n        padding: 0px;\r\n        " +
-                    "font-family: inherit;\r\n        font-size: 100%;\r\n    }\r\n\r\n    .help-page-table t" +
-                    "body tr:hover td {\r\n        background-color: #F3F3F3;\r\n    }\r\n\r\na:hover {\r\n    " +
-                    "background-color: transparent;\r\n}\r\n\r\n.sample-header {\r\n    border: 2px solid #D4" +
-                    "D4D4;\r\n    background: #76B8DB;\r\n    color: #FFFFFF;\r\n    padding: 8px 15px;\r\n  " +
-                    "  border-bottom: none;\r\n    display: inline-block;\r\n    margin: 10px 0px 0px 0px" +
-                    ";\r\n}\r\n\r\n.sample-content {\r\n    display: block;\r\n    border-width: 0;\r\n    paddin" +
-                    "g: 15px 20px;\r\n    background: #FFFFFF;\r\n    border: 2px solid #D4D4D4;\r\n    mar" +
-                    "gin: 0px 0px 10px 0px;\r\n}\r\n\r\n.api-name {\r\n    width: 40%;\r\n}\r\n\r\n.api-documentati" +
-                    "on {\r\n    width: 60%;\r\n}\r\n\r\n.parameter-name {\r\n    width: 20%;\r\n}\r\n\r\n.parameter-" +
-                    "documentation {\r\n    width: 50%;\r\n}\r\n\r\n.parameter-source {\r\n    width: 30%;\r\n}");
-            this.Write("\r\n\t</style>\r\n\t\t");
+            this.Write("</title>\n\t<style type=\"text/css\">\n\t\t");
+            this.Write("pre.wrapped {\n    white-space: -moz-pre-wrap;\n    white-space: -pre-wrap;\n    whi" +
+                    "te-space: -o-pre-wrap;\n    white-space: pre-wrap;\n}\n\n.warning-message-container " +
+                    "{\n    margin-top: 20px;\n    padding: 0 10px;\n    color: #525252;\n    background:" +
+                    " #EFDCA9;\n    border: 1px solid #CCCCCC;\n}\n\n.help-page-table {\n    width: 100%;\n" +
+                    "    border-collapse: collapse;\n    text-align: left;\n    margin: 0px 0px 20px 0p" +
+                    "x;\n    border-top: 2px solid #D4D4D4;\n}\n\n    .help-page-table th {\n        text-" +
+                    "align: left;\n        font-weight: bold;\n        border-bottom: 2px solid #D4D4D4" +
+                    ";\n        padding: 8px 6px 8px 6px;\n    }\n\n    .help-page-table td {\n        bor" +
+                    "der-bottom: 2px solid #D4D4D4;\n        padding: 15px 8px 15px 8px;\n        verti" +
+                    "cal-align: top;\n    }\n\n    .help-page-table pre, .help-page-table p {\n        ma" +
+                    "rgin: 0px;\n        padding: 0px;\n        font-family: inherit;\n        font-size" +
+                    ": 100%;\n    }\n\n    .help-page-table tbody tr:hover td {\n        background-color" +
+                    ": #F3F3F3;\n    }\n\na:hover {\n    background-color: transparent;\n}\n\n.sample-header" +
+                    " {\n    border: 2px solid #D4D4D4;\n    background: #76B8DB;\n    color: #FFFFFF;\n " +
+                    "   padding: 8px 15px;\n    border-bottom: none;\n    display: inline-block;\n    ma" +
+                    "rgin: 10px 0px 0px 0px;\n}\n\n.sample-content {\n    display: block;\n    border-widt" +
+                    "h: 0;\n    padding: 15px 20px;\n    background: #FFFFFF;\n    border: 2px solid #D4" +
+                    "D4D4;\n    margin: 0px 0px 10px 0px;\n}\n\n.api-name {\n    width: 40%;\n}\n\n.api-docum" +
+                    "entation {\n    width: 60%;\n}\n\n.parameter-name {\n    width: 20%;\n}\n\n.parameter-do" +
+                    "cumentation {\n    width: 50%;\n}\n\n.parameter-source {\n    width: 30%;\n}");
+            this.Write("\n\t</style>\n\t\t");
             
-            #line 24 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
  foreach(string style in Options.StyleSheets) {
             
             #line default
             #line hidden
-            this.Write("\t\t<link rel=\"stylesheet\" href=\"");
+            this.Write("\n\t\t<link rel=\"stylesheet\" href=\"");
             
-            #line 25 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(style));
             
             #line default
             #line hidden
-            this.Write("\" />\r\n\t");
+            this.Write("\" />\n\t");
             
-            #line 26 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("</head>\r\n<body>\r\n<div id=\"body\">\r\n    <section class=\"featured\">\r\n        <div cl" +
-                    "ass=\"content-wrapper\">\r\n            <p>\r\n                <a href=\"");
+            this.Write("\n</head>\n<body>\n<div id=\"body\">\n    <section class=\"featured\">\n        <div class" +
+                    "=\"content-wrapper\">\n            <p>\n                <a href=\"");
             
-            #line 33 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\Api.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HomePageLink));
             
             #line default
             #line hidden
-            this.Write("\">Help Page Home</a>\r\n            </p>\r\n        </div>\r\n    </section>\r\n    <sect" +
-                    "ion class=\"content-wrapper main-content clear-fix\">\r\n        ");
+            this.Write("\">Help Page Home</a>\n            </p>\n        </div>\n    </section>\n    <section " +
+                    "class=\"content-wrapper main-content clear-fix\">\n        ");
             
-            #line 1 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
 
     bool hasParameters = description.ParameterDescriptions.Count > 0;
     bool hasRequestSamples = Model.SampleRequests.Count > 0;
@@ -115,80 +126,80 @@ namespace WebApiHelpPage
             
             #line default
             #line hidden
-            this.Write("<h1>");
+            this.Write("\n<h1>");
             
-            #line 6 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(description.HttpMethod.Method));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 6 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(description.RelativePath));
             
             #line default
             #line hidden
-            this.Write("</h1>\r\n<div>\r\n    ");
+            this.Write("</h1>\n<div>\n    ");
             
-            #line 8 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
  if (description.Documentation != null)
     { 
             
             #line default
             #line hidden
-            this.Write("        <p>");
+            this.Write("\n        <p>");
             
-            #line 10 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(description.Documentation));
             
             #line default
             #line hidden
-            this.Write("</p>\r\n    ");
+            this.Write("</p>\n    ");
             
-            #line 11 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
  }
     else
     { 
             
             #line default
             #line hidden
-            this.Write("        <p>No documentation available.</p>\r\n    ");
+            this.Write("\n        <p>No documentation available.</p>\n    ");
             
-            #line 15 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\r\n    ");
+            this.Write("\n\n    ");
             
-            #line 17 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
  if (hasParameters || hasRequestSamples)
     { 
             
             #line default
             #line hidden
-            this.Write("        <h2>Request Information</h2>\r\n        ");
+            this.Write("\n        <h2>Request Information</h2>\n        ");
             
-            #line 20 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
  if (hasParameters)
         { 
             
             #line default
             #line hidden
-            this.Write("            <h3>Parameters</h3>\r\n            ");
+            this.Write("\n            <h3>Parameters</h3>\n            ");
             
-            #line 1 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
 
     Collection<ApiParameterDescription> parameters = Model.ApiDescription.ParameterDescriptions;
 
             
             #line default
             #line hidden
-            this.Write("<table class=\"help-page-table\">\r\n    <thead>\r\n    <tr><th>Name</th><th>Descriptio" +
-                    "n</th><th>Additional information</th></tr>\r\n    </thead>\r\n    <tbody>\r\n    ");
+            this.Write("\n<table class=\"help-page-table\">\n    <thead>\n    <tr><th>Name</th><th>Description" +
+                    "</th><th>Additional information</th></tr>\n    </thead>\n    <tbody>\n    ");
             
-            #line 9 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
  foreach (ApiParameterDescription parameter in parameters)
     {
         string parameterDocumentation = parameter.Documentation != null ?
@@ -196,89 +207,91 @@ namespace WebApiHelpPage
             "No documentation available.";
     
         // Don't show CancellationToken because it's a special parameter
-        if (!typeof(CancellationToken).IsAssignableFrom(parameter.ParameterDescriptor.ParameterType))
+        if (parameter!=null && parameter.ParameterDescriptor != null && 
+			parameter.ParameterDescriptor.ParameterType != null &&
+			!typeof(CancellationToken).IsAssignableFrom(parameter.ParameterDescriptor.ParameterType))
         { 
             
             #line default
             #line hidden
-            this.Write("            <tr>\r\n                <td><b>");
+            this.Write("\n            <tr>\n                <td><b>");
             
-            #line 19 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
-            this.Write("</b></td>\r\n                <td><pre>");
+            this.Write("</b></td>\n                <td><pre>");
             
-            #line 20 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameterDocumentation));
             
             #line default
             #line hidden
-            this.Write("</pre></td>\r\n                <td>\r\n                    ");
+            this.Write("</pre></td>\n                <td>\n                    ");
             
-            #line 22 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
  switch (parameter.Source)
                     {
                         case ApiParameterSource.FromBody: 
             
             #line default
             #line hidden
-            this.Write("                            <p>Define this parameter in the request <b>body</b>.<" +
-                    "/p>\r\n                            ");
+            this.Write("\n                            <p>Define this parameter in the request <b>body</b>." +
+                    "</p>\n                            ");
             
-            #line 26 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
  break;
                         case ApiParameterSource.FromUri: 
             
             #line default
             #line hidden
-            this.Write("                            <p>Define this parameter in the request <b>URI</b>.</" +
-                    "p>\r\n                            ");
+            this.Write("\n                            <p>Define this parameter in the request <b>URI</b>.<" +
+                    "/p>\n                            ");
             
-            #line 29 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
  break;
                         case ApiParameterSource.Unknown:
                         default: 
             
             #line default
             #line hidden
-            this.Write("                            <p>None.</p>\r\n                            ");
+            this.Write("\n                            <p>None.</p>\n                            ");
             
-            #line 33 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
  break;
                     } 
             
             #line default
             #line hidden
-            this.Write("                </td>\r\n            </tr>\r\n        ");
+            this.Write("\n                </td>\n            </tr>\n        ");
             
-            #line 37 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Parameters.tt"
  } 
     } 
             
             #line default
             #line hidden
-            this.Write("    </tbody>\r\n</table>");
-            this.Write("\r\n        ");
+            this.Write("\n    </tbody>\n</table>");
+            this.Write("\n        ");
             
-            #line 24 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
  } 
         if (hasRequestSamples)
         { 
             
             #line default
             #line hidden
-            this.Write("            <h3>Request body formats</h3>\r\n\t\t\t");
+            this.Write("\n            <h3>Request body formats</h3>\n\t\t\t");
             
-            #line 28 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
  var ModelSamples = Model.SampleRequests; 
             
             #line default
             #line hidden
-            this.Write("\t\t\t");
+            this.Write("\n\t\t\t");
             
-            #line 1 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
 
     // Group the samples into a single tab if they are the same.
     Dictionary<string, object> samples = ModelSamples.GroupBy(pair => pair.Value).ToDictionary(
@@ -289,34 +302,34 @@ namespace WebApiHelpPage
             
             #line default
             #line hidden
-            this.Write("<div>\r\n    ");
+            this.Write("\n<div>\n    ");
             
-            #line 9 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  foreach (var mediaType in mediaTypes)
     { 
             
             #line default
             #line hidden
-            this.Write("\t\t<h4 class=\"sample-header\">");
+            this.Write("\n\t\t<h4 class=\"sample-header\">");
             
-            #line 11 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(mediaType));
             
             #line default
             #line hidden
-            this.Write("</h4>\r\n        <div class=\"sample-content\">\r\n            <span><b>Sample:</b></sp" +
-                    "an>\r\n            ");
+            this.Write("</h4>\n        <div class=\"sample-content\">\n            <span><b>Sample:</b></span" +
+                    ">\n            ");
             
-            #line 14 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  var sample = samples[mediaType];
             if (sample == null)
             { 
             
             #line default
             #line hidden
-            this.Write("                <p>Sample not available.</p>\r\n            ");
+            this.Write("\n                <p>Sample not available.</p>\n            ");
             
-            #line 18 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  }
             else
             {
@@ -325,81 +338,81 @@ namespace WebApiHelpPage
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t\t<pre class=\"wrapped\">");
+            this.Write("\n\t\t\t\t\t<pre class=\"wrapped\">");
             
-            #line 23 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HttpUtility.HtmlEncode(((TextSample)sample).Text)));
             
             #line default
             #line hidden
-            this.Write("</pre>\r\n\t\t\t\t");
+            this.Write("</pre>\n\t\t\t\t");
             
-            #line 24 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  }
 				else if (sample is ImageSample)
 				{ 
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t\t<img src=\"((TextSample)sample).Src\" />\r\n\t\t\t\t");
+            this.Write("\n\t\t\t\t\t<img src=\"((TextSample)sample).Src\" />\n\t\t\t\t");
             
-            #line 28 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  }
 				else if (sample is InvalidSample)
 				{ 
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t\t<div class=\"warning-message-container\">");
+            this.Write("\n\t\t\t\t\t<div class=\"warning-message-container\">");
             
-            #line 31 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HttpUtility.HtmlEncode(((InvalidSample)sample).ErrorMessage)));
             
             #line default
             #line hidden
-            this.Write("</div>\r\n\t\t\t\t");
+            this.Write("</div>\n\t\t\t\t");
             
-            #line 32 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  }
             } 
             
             #line default
             #line hidden
-            this.Write("        </div>\r\n    ");
+            this.Write("\n        </div>\n    ");
             
-            #line 35 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("</div>");
-            this.Write("\r\n        ");
+            this.Write("\n</div>");
+            this.Write("\n        ");
             
-            #line 30 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
  }
     } 
             
             #line default
             #line hidden
-            this.Write(" \r\n       \r\n    ");
+            this.Write(" \n       \n    ");
             
-            #line 33 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
  if (hasResponseSamples)
     { 
             
             #line default
             #line hidden
-            this.Write("     \r\n        <h2>Response Information</h2> \r\n        <h3>Response body formats<" +
-                    "/h3>\r\n\t\t");
+            this.Write("     \n        <h2>Response Information</h2> \n        <h3>Response body formats</h" +
+                    "3>\n\t\t");
             
-            #line 37 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
  var ModelSamples = Model.SampleResponses; 
             
             #line default
             #line hidden
-            this.Write("\t\t");
+            this.Write("\n\t\t");
             
-            #line 1 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
 
     // Group the samples into a single tab if they are the same.
     Dictionary<string, object> samples = ModelSamples.GroupBy(pair => pair.Value).ToDictionary(
@@ -410,34 +423,34 @@ namespace WebApiHelpPage
             
             #line default
             #line hidden
-            this.Write("<div>\r\n    ");
+            this.Write("\n<div>\n    ");
             
-            #line 9 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  foreach (var mediaType in mediaTypes)
     { 
             
             #line default
             #line hidden
-            this.Write("\t\t<h4 class=\"sample-header\">");
+            this.Write("\n\t\t<h4 class=\"sample-header\">");
             
-            #line 11 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(mediaType));
             
             #line default
             #line hidden
-            this.Write("</h4>\r\n        <div class=\"sample-content\">\r\n            <span><b>Sample:</b></sp" +
-                    "an>\r\n            ");
+            this.Write("</h4>\n        <div class=\"sample-content\">\n            <span><b>Sample:</b></span" +
+                    ">\n            ");
             
-            #line 14 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  var sample = samples[mediaType];
             if (sample == null)
             { 
             
             #line default
             #line hidden
-            this.Write("                <p>Sample not available.</p>\r\n            ");
+            this.Write("\n                <p>Sample not available.</p>\n            ");
             
-            #line 18 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  }
             else
             {
@@ -446,63 +459,63 @@ namespace WebApiHelpPage
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t\t<pre class=\"wrapped\">");
+            this.Write("\n\t\t\t\t\t<pre class=\"wrapped\">");
             
-            #line 23 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HttpUtility.HtmlEncode(((TextSample)sample).Text)));
             
             #line default
             #line hidden
-            this.Write("</pre>\r\n\t\t\t\t");
+            this.Write("</pre>\n\t\t\t\t");
             
-            #line 24 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  }
 				else if (sample is ImageSample)
 				{ 
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t\t<img src=\"((TextSample)sample).Src\" />\r\n\t\t\t\t");
+            this.Write("\n\t\t\t\t\t<img src=\"((TextSample)sample).Src\" />\n\t\t\t\t");
             
-            #line 28 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  }
 				else if (sample is InvalidSample)
 				{ 
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t\t<div class=\"warning-message-container\">");
+            this.Write("\n\t\t\t\t\t<div class=\"warning-message-container\">");
             
-            #line 31 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HttpUtility.HtmlEncode(((InvalidSample)sample).ErrorMessage)));
             
             #line default
             #line hidden
-            this.Write("</div>\r\n\t\t\t\t");
+            this.Write("</div>\n\t\t\t\t");
             
-            #line 32 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  }
             } 
             
             #line default
             #line hidden
-            this.Write("        </div>\r\n    ");
+            this.Write("\n        </div>\n    ");
             
-            #line 35 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\Samples.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("</div>");
-            this.Write("\r\n    ");
+            this.Write("\n</div>");
+            this.Write("\n    ");
             
-            #line 39 "C:\dev\experiments\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
+            #line 1 "c:\dev\ssui\webapi-html-help-generation\C#\WebApiHelpPageGenerator\Views\DisplayTemplates\HelpPageApiModel.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("</div>");
-            this.Write("\r\n    </section>\r\n</div>\r\n</body>\r\n</html>");
+            this.Write("\n</div>");
+            this.Write("\n    </section>\n</div>\n</body>\n</html>");
             return this.GenerationEnvironment.ToString();
         }
     }
