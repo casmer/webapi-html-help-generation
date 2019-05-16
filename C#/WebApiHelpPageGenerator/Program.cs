@@ -68,6 +68,11 @@ namespace WebApiHelpPageGenerator
             {
                 outputGenerator = new DefaultOutputGenerator();
             }
+
+            if(!string.IsNullOrWhiteSpace(options.OutputPath))
+            {
+                outputGenerator.OutputPath = options.OutputPath;
+            }
             return outputGenerator;
         }
 

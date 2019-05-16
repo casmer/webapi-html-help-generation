@@ -10,12 +10,11 @@ namespace WebApiHelpPageGenerator
     public class DefaultOutputGenerator : IOutputGenerator
     {
         private const string fileName = "Index.html";
-        public string basePath { get; set; }
 
-
+        public string OutputPath { get; set; }
       public DefaultOutputGenerator()
       {
-        basePath = Path.Combine(Environment.CurrentDirectory, "HtmlHelp");
+        OutputPath = Path.Combine(Environment.CurrentDirectory, "HtmlHelp");
       }
       public DefaultOutputGenerator(string baseBath):base()
       {
@@ -50,10 +49,11 @@ namespace WebApiHelpPageGenerator
 
         private void WriteFile(string fileName, String pageContent)
         {
+            var path = Path.Combine(OutputPath, fileName);
             Console.WriteLine("writing file: {0}", fileName);
-          if (!Directory.Exists(basePath))
-            Directory.CreateDirectory(basePath);
-            File.WriteAllText(Path.Combine(basePath, fileName), pageContent);
+            if (!Directory.Exists(OutputPath))
+                Directory.CreateDirectory(OutputPath);
+            File.WriteAllText(path, pageContent);
         }
     }
 }

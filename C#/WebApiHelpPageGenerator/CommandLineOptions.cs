@@ -18,7 +18,10 @@ namespace WebApiHelpPageGenerator
 		[OptionArray('s',"stylesheets", HelpText = "URL of style sheets to include, prefer relative paths such as ../styles.css")]
 		public string[] StyleSheets { get; set; }
 
-		[HelpOption]
+        [Option('o', "outputpath", Required = true, HelpText = "Path to the where the API help files are output.")]
+        public string OutputPath { get; set; }
+
+        [HelpOption]
         public string GetUsage()
         {
             return HelpText.AutoBuild(this, (HelpText current) => HelpText.DefaultParsingErrorsHandler(this, current));

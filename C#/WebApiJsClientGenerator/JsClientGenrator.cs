@@ -10,6 +10,13 @@ namespace WebApiJsClientGenerator
 {
     public class JsClientGenrator : IOutputGenerator
     {
+        public string OutputPath { get; set; }
+
+        public JsClientGenrator()
+        {
+            OutputPath = Path.Combine(Environment.CurrentDirectory, "JsHelp");
+        }
+
         public void GenerateApiDetails(WebApiHelpPage.Models.HelpPageApiModel apiModel, CommandLineOptions options)
         {
         }
@@ -21,13 +28,16 @@ namespace WebApiJsClientGenerator
                 Apis = apis
             };
             string jsClient = jsClientTemplate.TransformText();
-            WriteFile("client.js", jsClient);
+            WriteFile(Path.Combine(OutputPath, "client.js"), jsClient);
         }
 
-        private static void WriteFile(string fileName, String pageContent)
+        private void WriteFile(string fileName, String pageContent)
         {
+            var path = Path.Combine(OutputPath, fileName);
             Console.WriteLine("writing file: {0}", fileName);
-            File.WriteAllText(fileName, pageContent);
+            if (!Directory.Exists(OutputPath))
+                Directory.CreateDirectory(OutputPath);
+            File.WriteAllText(path, pageContent);
         }
     }
 }
