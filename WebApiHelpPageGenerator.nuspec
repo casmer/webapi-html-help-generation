@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>WebApiHelpPageGenerator</id>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <title>Web API Help Page Generator</title>
     <authors>MarkRobertJohnson@outlook.com</authors>
     <owners>MarkRobertJohnson@outlook.com</owners>
