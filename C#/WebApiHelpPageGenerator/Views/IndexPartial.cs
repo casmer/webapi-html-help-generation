@@ -10,6 +10,6 @@ namespace WebApiHelpPage
         public Collection<ApiDescription> Model { get; set; }
 
         public Func<string, string> ApiLinkFactory { get; set; }
-		public CommandLineOptions Options { get; set; }
+        public CommandLineOptions Options { get; set; }
     }
 }

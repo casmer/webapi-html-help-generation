@@ -1,4 +1,4 @@
-namespace WebApiHelpPage
+﻿namespace WebApiHelpPage
 {
     public class CollectionModelDescription : ModelDescription
     {

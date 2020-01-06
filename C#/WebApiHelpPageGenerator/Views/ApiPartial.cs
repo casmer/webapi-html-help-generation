@@ -9,6 +9,6 @@ namespace WebApiHelpPage
         public HelpPageApiModel Model { get; set; }
 
         public string HomePageLink { get; set; }
-		public CommandLineOptions Options { get; internal set; }
-	}
+        public CommandLineOptions Options { get; internal set; }
+    }
 }

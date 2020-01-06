@@ -15,8 +15,8 @@ namespace WebApiHelpPageGenerator
         [Option('e', "extensions", HelpText = "Path to the assembly where the extensions are defined.")]
         public string ExtensionAssemblyPath { get; set; }
 
-		[OptionArray('s',"stylesheets", HelpText = "URL of style sheets to include, prefer relative paths such as ../styles.css")]
-		public string[] StyleSheets { get; set; }
+        [OptionArray('s', "stylesheets", HelpText = "URL of style sheets to include, prefer relative paths such as ../styles.css")]
+        public string[] StyleSheets { get; set; }
 
         [Option('o', "outputpath", Required = true, HelpText = "Path to the where the API help files are output.")]
         public string OutputPath { get; set; }

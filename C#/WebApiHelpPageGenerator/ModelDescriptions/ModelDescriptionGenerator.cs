@@ -25,38 +25,38 @@ namespace WebApiHelpPage
             { typeof(RequiredAttribute), a => "Required" },
             { typeof(RangeAttribute), a =>
                 {
-                    RangeAttribute range = (RangeAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Range: inclusive between {0} and {1}", range.Minimum, range.Maximum);
+                    var range = (RangeAttribute)a;
+                    return string.Format(CultureInfo.CurrentCulture, "Range: inclusive between {0} and {1}", range.Minimum, range.Maximum);
                 }
             },
             { typeof(MaxLengthAttribute), a =>
                 {
-                    MaxLengthAttribute maxLength = (MaxLengthAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Max length: {0}", maxLength.Length);
+                    var maxLength = (MaxLengthAttribute)a;
+                    return string.Format(CultureInfo.CurrentCulture, "Max length: {0}", maxLength.Length);
                 }
             },
             { typeof(MinLengthAttribute), a =>
                 {
-                    MinLengthAttribute minLength = (MinLengthAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Min length: {0}", minLength.Length);
+                    var minLength = (MinLengthAttribute)a;
+                    return string.Format(CultureInfo.CurrentCulture, "Min length: {0}", minLength.Length);
                 }
             },
             { typeof(StringLengthAttribute), a =>
                 {
-                    StringLengthAttribute strLength = (StringLengthAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "String length: inclusive between {0} and {1}", strLength.MinimumLength, strLength.MaximumLength);
+                    var strLength = (StringLengthAttribute)a;
+                    return string.Format(CultureInfo.CurrentCulture, "String length: inclusive between {0} and {1}", strLength.MinimumLength, strLength.MaximumLength);
                 }
             },
             { typeof(DataTypeAttribute), a =>
                 {
-                    DataTypeAttribute dataType = (DataTypeAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Data type: {0}", dataType.CustomDataType ?? dataType.DataType.ToString());
+                    var dataType = (DataTypeAttribute)a;
+                    return string.Format(CultureInfo.CurrentCulture, "Data type: {0}", dataType.CustomDataType ?? dataType.DataType.ToString());
                 }
             },
             { typeof(RegularExpressionAttribute), a =>
                 {
-                    RegularExpressionAttribute regularExpression = (RegularExpressionAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Matching regular expression pattern: {0}", regularExpression.Pattern);
+                    var regularExpression = (RegularExpressionAttribute)a;
+                    return string.Format(CultureInfo.CurrentCulture, "Matching regular expression pattern: {0}", regularExpression.Pattern);
                 }
             },
         };
@@ -77,7 +77,7 @@ namespace WebApiHelpPage
             { typeof(Single), "decimal number" },
             { typeof(Double), "decimal number" },
             { typeof(Decimal), "decimal number" },
-            { typeof(String), "string" },
+            { typeof(string), "string" },
             { typeof(Guid), "globally unique identifier" },
             { typeof(TimeSpan), "time interval" },
             { typeof(DateTime), "date" },
@@ -115,20 +115,20 @@ namespace WebApiHelpPage
                 throw new ArgumentNullException("modelType");
             }
 
-            Type underlyingType = Nullable.GetUnderlyingType(modelType);
+            var underlyingType = Nullable.GetUnderlyingType(modelType);
             if (underlyingType != null)
             {
                 modelType = underlyingType;
             }
 
             ModelDescription modelDescription;
-            string modelName = ModelNameHelper.GetModelName(modelType);
+            var modelName = ModelNameHelper.GetModelName(modelType);
             if (GeneratedModels.TryGetValue(modelName, out modelDescription))
             {
                 if (modelType != modelDescription.ModelType)
                 {
                     throw new InvalidOperationException(
-                        String.Format(
+                        string.Format(
                             CultureInfo.CurrentCulture,
                             "A model description could not be created. Duplicate model name '{0}' was found for types '{1}' and '{2}'. " +
                             "Use the [ModelName] attribute to change the model name for at least one of the types so that it has a unique name.",
@@ -152,11 +152,11 @@ namespace WebApiHelpPage
 
             if (modelType.IsGenericType)
             {
-                Type[] genericArguments = modelType.GetGenericArguments();
+                var genericArguments = modelType.GetGenericArguments();
 
                 if (genericArguments.Length == 1)
                 {
-                    Type enumerableType = typeof(IEnumerable<>).MakeGenericType(genericArguments);
+                    var enumerableType = typeof(IEnumerable<>).MakeGenericType(genericArguments);
                     if (enumerableType.IsAssignableFrom(modelType))
                     {
                         return GenerateCollectionModelDescription(modelType, genericArguments[0]);
@@ -164,13 +164,13 @@ namespace WebApiHelpPage
                 }
                 if (genericArguments.Length == 2)
                 {
-                    Type dictionaryType = typeof(IDictionary<,>).MakeGenericType(genericArguments);
+                    var dictionaryType = typeof(IDictionary<,>).MakeGenericType(genericArguments);
                     if (dictionaryType.IsAssignableFrom(modelType))
                     {
                         return GenerateDictionaryModelDescription(modelType, genericArguments[0], genericArguments[1]);
                     }
 
-                    Type keyValuePairType = typeof(KeyValuePair<,>).MakeGenericType(genericArguments);
+                    var keyValuePairType = typeof(KeyValuePair<,>).MakeGenericType(genericArguments);
                     if (keyValuePairType.IsAssignableFrom(modelType))
                     {
                         return GenerateKeyValuePairModelDescription(modelType, genericArguments[0], genericArguments[1]);
@@ -180,7 +180,7 @@ namespace WebApiHelpPage
 
             if (modelType.IsArray)
             {
-                Type elementType = modelType.GetElementType();
+                var elementType = modelType.GetElementType();
                 return GenerateCollectionModelDescription(modelType, elementType);
             }
 
@@ -205,16 +205,16 @@ namespace WebApiHelpPage
         // Change this to provide different name for the member.
         private static string GetMemberName(MemberInfo member, bool hasDataContractAttribute)
         {
-            JsonPropertyAttribute jsonProperty = member.GetCustomAttribute<JsonPropertyAttribute>();
-            if (jsonProperty != null && !String.IsNullOrEmpty(jsonProperty.PropertyName))
+            var jsonProperty = member.GetCustomAttribute<JsonPropertyAttribute>();
+            if (jsonProperty != null && !string.IsNullOrEmpty(jsonProperty.PropertyName))
             {
                 return jsonProperty.PropertyName;
             }
 
             if (hasDataContractAttribute)
             {
-                DataMemberAttribute dataMember = member.GetCustomAttribute<DataMemberAttribute>();
-                if (dataMember != null && !String.IsNullOrEmpty(dataMember.Name))
+                var dataMember = member.GetCustomAttribute<DataMemberAttribute>();
+                if (dataMember != null && !string.IsNullOrEmpty(dataMember.Name))
                 {
                     return dataMember.Name;
                 }
@@ -225,13 +225,13 @@ namespace WebApiHelpPage
 
         private static bool ShouldDisplayMember(MemberInfo member, bool hasDataContractAttribute)
         {
-            JsonIgnoreAttribute jsonIgnore = member.GetCustomAttribute<JsonIgnoreAttribute>();
-            XmlIgnoreAttribute xmlIgnore = member.GetCustomAttribute<XmlIgnoreAttribute>();
-            IgnoreDataMemberAttribute ignoreDataMember = member.GetCustomAttribute<IgnoreDataMemberAttribute>();
-            NonSerializedAttribute nonSerialized = member.GetCustomAttribute<NonSerializedAttribute>();
-            ApiExplorerSettingsAttribute apiExplorerSetting = member.GetCustomAttribute<ApiExplorerSettingsAttribute>();
+            var jsonIgnore = member.GetCustomAttribute<JsonIgnoreAttribute>();
+            var xmlIgnore = member.GetCustomAttribute<XmlIgnoreAttribute>();
+            var ignoreDataMember = member.GetCustomAttribute<IgnoreDataMemberAttribute>();
+            var nonSerialized = member.GetCustomAttribute<NonSerializedAttribute>();
+            var apiExplorerSetting = member.GetCustomAttribute<ApiExplorerSettingsAttribute>();
 
-            bool hasMemberAttribute = member.DeclaringType.IsEnum ?
+            var hasMemberAttribute = member.DeclaringType.IsEnum ?
                 member.GetCustomAttribute<EnumMemberAttribute>() != null :
                 member.GetCustomAttribute<DataMemberAttribute>() != null;
 
@@ -267,10 +267,10 @@ namespace WebApiHelpPage
 
         private void GenerateAnnotations(MemberInfo property, ParameterDescription propertyModel)
         {
-            List<ParameterAnnotation> annotations = new List<ParameterAnnotation>();
+            var annotations = new List<ParameterAnnotation>();
 
-            IEnumerable<Attribute> attributes = property.GetCustomAttributes();
-            foreach (Attribute attribute in attributes)
+            var attributes = property.GetCustomAttributes();
+            foreach (var attribute in attributes)
             {
                 Func<object, string> textGenerator;
                 if (AnnotationTextGenerator.TryGetValue(attribute.GetType(), out textGenerator))
@@ -298,10 +298,10 @@ namespace WebApiHelpPage
                 }
 
                 // Sort the rest based on alphabetic order of the documentation
-                return String.Compare(x.Documentation, y.Documentation, StringComparison.OrdinalIgnoreCase);
+                return string.Compare(x.Documentation, y.Documentation, StringComparison.OrdinalIgnoreCase);
             });
 
-            foreach (ParameterAnnotation annotation in annotations)
+            foreach (var annotation in annotations)
             {
                 propertyModel.Annotations.Add(annotation);
             }
@@ -309,7 +309,7 @@ namespace WebApiHelpPage
 
         private CollectionModelDescription GenerateCollectionModelDescription(Type modelType, Type elementType)
         {
-            ModelDescription collectionModelDescription = GetOrCreateModelDescription(elementType);
+            var collectionModelDescription = GetOrCreateModelDescription(elementType);
             if (collectionModelDescription != null)
             {
                 return new CollectionModelDescription
@@ -325,7 +325,7 @@ namespace WebApiHelpPage
 
         private ModelDescription GenerateComplexTypeModelDescription(Type modelType)
         {
-            ComplexTypeModelDescription complexModelDescription = new ComplexTypeModelDescription
+            var complexModelDescription = new ComplexTypeModelDescription
             {
                 Name = ModelNameHelper.GetModelName(modelType),
                 ModelType = modelType,
@@ -333,13 +333,13 @@ namespace WebApiHelpPage
             };
 
             GeneratedModels.Add(complexModelDescription.Name, complexModelDescription);
-            bool hasDataContractAttribute = modelType.GetCustomAttribute<DataContractAttribute>() != null;
-            PropertyInfo[] properties = modelType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            foreach (PropertyInfo property in properties)
+            var hasDataContractAttribute = modelType.GetCustomAttribute<DataContractAttribute>() != null;
+            var properties = modelType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (var property in properties)
             {
                 if (ShouldDisplayMember(property, hasDataContractAttribute))
                 {
-                    ParameterDescription propertyModel = new ParameterDescription
+                    var propertyModel = new ParameterDescription
                     {
                         Name = GetMemberName(property, hasDataContractAttribute)
                     };
@@ -355,12 +355,12 @@ namespace WebApiHelpPage
                 }
             }
 
-            FieldInfo[] fields = modelType.GetFields(BindingFlags.Public | BindingFlags.Instance);
-            foreach (FieldInfo field in fields)
+            var fields = modelType.GetFields(BindingFlags.Public | BindingFlags.Instance);
+            foreach (var field in fields)
             {
                 if (ShouldDisplayMember(field, hasDataContractAttribute))
                 {
-                    ParameterDescription propertyModel = new ParameterDescription
+                    var propertyModel = new ParameterDescription
                     {
                         Name = GetMemberName(field, hasDataContractAttribute)
                     };
@@ -380,8 +380,8 @@ namespace WebApiHelpPage
 
         private DictionaryModelDescription GenerateDictionaryModelDescription(Type modelType, Type keyType, Type valueType)
         {
-            ModelDescription keyModelDescription = GetOrCreateModelDescription(keyType);
-            ModelDescription valueModelDescription = GetOrCreateModelDescription(valueType);
+            var keyModelDescription = GetOrCreateModelDescription(keyType);
+            var valueModelDescription = GetOrCreateModelDescription(valueType);
 
             return new DictionaryModelDescription
             {
@@ -394,18 +394,18 @@ namespace WebApiHelpPage
 
         private EnumTypeModelDescription GenerateEnumTypeModelDescription(Type modelType)
         {
-            EnumTypeModelDescription enumDescription = new EnumTypeModelDescription
+            var enumDescription = new EnumTypeModelDescription
             {
                 Name = ModelNameHelper.GetModelName(modelType),
                 ModelType = modelType,
                 Documentation = CreateDefaultDocumentation(modelType)
             };
-            bool hasDataContractAttribute = modelType.GetCustomAttribute<DataContractAttribute>() != null;
-            foreach (FieldInfo field in modelType.GetFields(BindingFlags.Public | BindingFlags.Static))
+            var hasDataContractAttribute = modelType.GetCustomAttribute<DataContractAttribute>() != null;
+            foreach (var field in modelType.GetFields(BindingFlags.Public | BindingFlags.Static))
             {
                 if (ShouldDisplayMember(field, hasDataContractAttribute))
                 {
-                    EnumValueDescription enumValue = new EnumValueDescription
+                    var enumValue = new EnumValueDescription
                     {
                         Name = field.Name,
                         Value = field.GetRawConstantValue().ToString()
@@ -424,8 +424,8 @@ namespace WebApiHelpPage
 
         private KeyValuePairModelDescription GenerateKeyValuePairModelDescription(Type modelType, Type keyType, Type valueType)
         {
-            ModelDescription keyModelDescription = GetOrCreateModelDescription(keyType);
-            ModelDescription valueModelDescription = GetOrCreateModelDescription(valueType);
+            var keyModelDescription = GetOrCreateModelDescription(keyType);
+            var valueModelDescription = GetOrCreateModelDescription(valueType);
 
             return new KeyValuePairModelDescription
             {
@@ -438,7 +438,7 @@ namespace WebApiHelpPage
 
         private ModelDescription GenerateSimpleTypeModelDescription(Type modelType)
         {
-            SimpleTypeModelDescription simpleModelDescription = new SimpleTypeModelDescription
+            var simpleModelDescription = new SimpleTypeModelDescription
             {
                 Name = ModelNameHelper.GetModelName(modelType),
                 ModelType = modelType,

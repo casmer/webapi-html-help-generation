@@ -23,20 +23,23 @@ namespace WebApiJsClientGenerator
 
         public void GenerateIndex(System.Collections.ObjectModel.Collection<System.Web.Http.Description.ApiDescription> apis, CommandLineOptions options)
         {
-            JsClientTemplate jsClientTemplate = new JsClientTemplate
+            var jsClientTemplate = new JsClientTemplate
             {
                 Apis = apis
             };
-            string jsClient = jsClientTemplate.TransformText();
+            var jsClient = jsClientTemplate.TransformText();
             WriteFile(Path.Combine(OutputPath, "client.js"), jsClient);
         }
 
-        private void WriteFile(string fileName, String pageContent)
+        private void WriteFile(string fileName, string pageContent)
         {
             var path = Path.Combine(OutputPath, fileName);
             Console.WriteLine("writing file: {0}", fileName);
             if (!Directory.Exists(OutputPath))
+            {
                 Directory.CreateDirectory(OutputPath);
+            }
+
             File.WriteAllText(path, pageContent);
         }
     }

@@ -16,25 +16,25 @@ namespace WebApiHelpPageGenerator
             var options = new CommandLineOptions();
             try
             {
-				bool success = CommandLine.Parser.Default.ParseArguments(args, options);
+                var success = CommandLine.Parser.Default.ParseArguments(args, options);
 
-				if (true)
+                if (true)
                 {
                     LoadReferences(options);
 
-                    string assemblyPath = options.AssemblyPath;
-                    HttpConfiguration config = HttpConfigurationImporter.ImportConfiguration(assemblyPath);
-                    Collection<ApiDescription> descriptions = config.Services.GetApiExplorer().ApiDescriptions;
-                    IOutputGenerator outputGenerator = LoadOutputGenerator(options);
-                  
+                    var assemblyPath = options.AssemblyPath;
+                    var config = HttpConfigurationImporter.ImportConfiguration(assemblyPath);
+                    var descriptions = config.Services.GetApiExplorer().ApiDescriptions;
+                    var outputGenerator = LoadOutputGenerator(options);
+
                     outputGenerator.GenerateIndex(descriptions, options);
 
                     foreach (var api in descriptions)
                     {
-                        HelpPageSampleGenerator sampleGenerator = config.GetHelpPageSampleGenerator();
-						HelpPageApiModel apiModel = HelpPageConfigurationExtensions.GetHelpPageApiModel(config, api.GetFriendlyId());
+                        var sampleGenerator = config.GetHelpPageSampleGenerator();
+                        var apiModel = HelpPageConfigurationExtensions.GetHelpPageApiModel(config, api.GetFriendlyId());
 
-						if (apiModel != null)
+                        if (apiModel != null)
                         {
                             outputGenerator.GenerateApiDetails(apiModel, options);
                         }
@@ -43,8 +43,26 @@ namespace WebApiHelpPageGenerator
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: {0}\n{1}", e.Message, e.StackTrace);
-				Environment.Exit(-1);
+                PrintException(e);
+                Environment.Exit(-1);
+            }
+        }
+
+        private static void PrintException(Exception ex)
+        {
+            var origColor = Console.ForegroundColor;
+            try
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error: {0}\n{1}", ex.Message, ex.StackTrace);
+                if (ex.InnerException != null)
+                {
+                    PrintException(ex.InnerException);
+                }
+            }
+            finally
+            {
+                Console.ForegroundColor = origColor;
             }
 
         }
@@ -52,8 +70,8 @@ namespace WebApiHelpPageGenerator
         private static IOutputGenerator LoadOutputGenerator(CommandLineOptions options)
         {
             IOutputGenerator outputGenerator = null;
-            string extensionAssemblyPath = options.ExtensionAssemblyPath;
-            if (!String.IsNullOrEmpty(extensionAssemblyPath))
+            var extensionAssemblyPath = options.ExtensionAssemblyPath;
+            if (!string.IsNullOrEmpty(extensionAssemblyPath))
             {
                 var assembly = Assembly.LoadFrom(extensionAssemblyPath);
                 foreach (var type in assembly.GetTypes())
@@ -69,7 +87,7 @@ namespace WebApiHelpPageGenerator
                 outputGenerator = new DefaultOutputGenerator();
             }
 
-            if(!string.IsNullOrWhiteSpace(options.OutputPath))
+            if (!string.IsNullOrWhiteSpace(options.OutputPath))
             {
                 outputGenerator.OutputPath = options.OutputPath;
             }
