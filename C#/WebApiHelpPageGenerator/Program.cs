@@ -16,39 +16,62 @@ namespace WebApiHelpPageGenerator
             var options = new CommandLineOptions();
             try
             {
-                if (CommandLine.Parser.Default.ParseArguments(args, options))
+                var success = CommandLine.Parser.Default.ParseArguments(args, options);
+
+                if (true)
                 {
                     LoadReferences(options);
 
-                    string assemblyPath = options.AssemblyPath;
-                    HttpConfiguration config = HttpConfigurationImporter.ImportConfiguration(assemblyPath);
-                    Collection<ApiDescription> descriptions = config.Services.GetApiExplorer().ApiDescriptions;
-                    IOutputGenerator outputGenerator = LoadOutputGenerator(options);
-                  
-                    outputGenerator.GenerateIndex(descriptions);
+                    var assemblyPath = options.AssemblyPath;
+                    var config = HttpConfigurationImporter.ImportConfiguration(assemblyPath);
+                    var descriptions = config.Services.GetApiExplorer().ApiDescriptions;
+                    var outputGenerator = LoadOutputGenerator(options);
+
+                    outputGenerator.GenerateIndex(descriptions, options);
 
                     foreach (var api in descriptions)
                     {
-                        HelpPageSampleGenerator sampleGenerator = config.GetHelpPageSampleGenerator();
-                        HelpPageApiModel apiModel = HelpPageConfigurationExtensions.GenerateApiModel(api, sampleGenerator);
+                        var sampleGenerator = config.GetHelpPageSampleGenerator();
+                        var apiModel = HelpPageConfigurationExtensions.GetHelpPageApiModel(config, api.GetFriendlyId());
+
                         if (apiModel != null)
                         {
-                            outputGenerator.GenerateApiDetails(apiModel);
+                            outputGenerator.GenerateApiDetails(apiModel, options);
                         }
                     }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: {0}", e.Message);
+                PrintException(e);
+                Environment.Exit(-1);
             }
+        }
+
+        private static void PrintException(Exception ex)
+        {
+            var origColor = Console.ForegroundColor;
+            try
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error: {0}\n{1}", ex.Message, ex.StackTrace);
+                if (ex.InnerException != null)
+                {
+                    PrintException(ex.InnerException);
+                }
+            }
+            finally
+            {
+                Console.ForegroundColor = origColor;
+            }
+
         }
 
         private static IOutputGenerator LoadOutputGenerator(CommandLineOptions options)
         {
             IOutputGenerator outputGenerator = null;
-            string extensionAssemblyPath = options.ExtensionAssemblyPath;
-            if (!String.IsNullOrEmpty(extensionAssemblyPath))
+            var extensionAssemblyPath = options.ExtensionAssemblyPath;
+            if (!string.IsNullOrEmpty(extensionAssemblyPath))
             {
                 var assembly = Assembly.LoadFrom(extensionAssemblyPath);
                 foreach (var type in assembly.GetTypes())
@@ -62,6 +85,11 @@ namespace WebApiHelpPageGenerator
             if (outputGenerator == null)
             {
                 outputGenerator = new DefaultOutputGenerator();
+            }
+
+            if (!string.IsNullOrWhiteSpace(options.OutputPath))
+            {
+                outputGenerator.OutputPath = options.OutputPath;
             }
             return outputGenerator;
         }

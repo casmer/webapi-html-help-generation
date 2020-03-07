@@ -1,4 +1,6 @@
-﻿using WebApiHelpPage.Models;
+﻿using System;
+using WebApiHelpPage.Models;
+using WebApiHelpPageGenerator;
 
 namespace WebApiHelpPage
 {
@@ -7,5 +9,6 @@ namespace WebApiHelpPage
         public HelpPageApiModel Model { get; set; }
 
         public string HomePageLink { get; set; }
+        public CommandLineOptions Options { get; internal set; }
     }
 }

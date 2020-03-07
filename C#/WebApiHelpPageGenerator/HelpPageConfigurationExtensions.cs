@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
@@ -191,14 +191,14 @@ namespace WebApiHelpPage
         public static HelpPageApiModel GetHelpPageApiModel(this HttpConfiguration config, string apiDescriptionId)
         {
             object model;
-            string modelId = ApiModelPrefix + apiDescriptionId;
+            var modelId = ApiModelPrefix + apiDescriptionId;
             if (!config.Properties.TryGetValue(modelId, out model))
             {
-                Collection<ApiDescription> apiDescriptions = config.Services.GetApiExplorer().ApiDescriptions;
-                ApiDescription apiDescription = apiDescriptions.FirstOrDefault(api => String.Equals(api.GetFriendlyId(), apiDescriptionId, StringComparison.OrdinalIgnoreCase));
+                var apiDescriptions = config.Services.GetApiExplorer().ApiDescriptions;
+                var apiDescription = apiDescriptions.FirstOrDefault(api => string.Equals(api.GetFriendlyId(), apiDescriptionId, StringComparison.OrdinalIgnoreCase));
                 if (apiDescription != null)
                 {
-                    HelpPageSampleGenerator sampleGenerator = config.GetHelpPageSampleGenerator();
+                    var sampleGenerator = config.GetHelpPageSampleGenerator();
                     model = GenerateApiModel(apiDescription, sampleGenerator);
                     config.Properties.TryAdd(modelId, model);
                 }
@@ -210,7 +210,7 @@ namespace WebApiHelpPage
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "The exception is recorded as ErrorMessages.")]
         public static HelpPageApiModel GenerateApiModel(ApiDescription apiDescription, HelpPageSampleGenerator sampleGenerator)
         {
-            HelpPageApiModel apiModel = new HelpPageApiModel();
+            var apiModel = new HelpPageApiModel();
             apiModel.ApiDescription = apiDescription;
 
             try
@@ -229,7 +229,7 @@ namespace WebApiHelpPage
             }
             catch (Exception e)
             {
-                apiModel.ErrorMessages.Add(String.Format(CultureInfo.CurrentCulture, "An exception has occurred while generating the sample. Exception Message: {0}", e.Message));
+                apiModel.ErrorMessages.Add(string.Format(CultureInfo.CurrentCulture, "An exception has occurred while generating the sample. Exception Message: {0}", e.Message));
             }
 
             return apiModel;
@@ -237,7 +237,7 @@ namespace WebApiHelpPage
 
         private static void LogInvalidSampleAsError(HelpPageApiModel apiModel, object sample)
         {
-            InvalidSample invalidSample = sample as InvalidSample;
+            var invalidSample = sample as InvalidSample;
             if (invalidSample != null)
             {
                 apiModel.ErrorMessages.Add(invalidSample.ErrorMessage);

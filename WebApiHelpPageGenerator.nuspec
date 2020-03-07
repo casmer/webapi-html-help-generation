@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>WebApiHelpPageGenerator</id>
+    <version>1.0.9</version>
+    <title>Web API Help Page Generator</title>
+    <authors>MarkRobertJohnson@outlook.com</authors>
+    <owners>MarkRobertJohnson@outlook.com</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/MarkRobertJohnson/webapi-html-help-generation</licenseUrl>
+    <projectUrl>https://github.com/MarkRobertJohnson/webapi-html-help-generation</projectUrl>
+    <iconUrl>https://github.com/MarkRobertJohnson/webapi-html-help-generation</iconUrl>
+    <description>Generates documentation for Web API 2.0 services</description>
+    <releaseNotes>Fix bug related to Newtonsoft.Json verison.  Removed generated files from package</releaseNotes>
+    <copyright></copyright>
+    <tags>WebAPI documentation generate</tags>
+  </metadata>
+</package>

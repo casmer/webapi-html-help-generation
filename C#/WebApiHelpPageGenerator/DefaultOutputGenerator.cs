@@ -10,48 +10,53 @@ namespace WebApiHelpPageGenerator
     public class DefaultOutputGenerator : IOutputGenerator
     {
         private const string fileName = "Index.html";
-        public string basePath { get; set; }
 
-
-      public DefaultOutputGenerator()
-      {
-        basePath = Path.Combine(Environment.CurrentDirectory, "HtmlHelp");
-      }
-      public DefaultOutputGenerator(string baseBath):base()
-      {
-        
-      }
-        public void GenerateIndex(Collection<ApiDescription> apis)
+        public string OutputPath { get; set; }
+        public DefaultOutputGenerator()
         {
-            Index indexTemplate = new Index
+            OutputPath = Path.Combine(Environment.CurrentDirectory, "HtmlHelp");
+        }
+        public DefaultOutputGenerator(string baseBath) : base()
+        {
+
+        }
+        public void GenerateIndex(Collection<ApiDescription> apis, CommandLineOptions options)
+        {
+            var indexTemplate = new Index
             {
                 Model = apis,
                 ApiLinkFactory = apiName =>
                 {
                     return apiName + ".html";
-                }
+                },
+                Options = options
             };
-            string helpPageIndex = indexTemplate.TransformText();
+            var helpPageIndex = indexTemplate.TransformText();
             WriteFile(fileName, helpPageIndex);
         }
 
-        public void GenerateApiDetails(HelpPageApiModel apiModel)
+        public void GenerateApiDetails(HelpPageApiModel apiModel, CommandLineOptions options)
         {
-            Api apiTemplate = new Api
+            var apiTemplate = new Api
             {
                 Model = apiModel,
-                HomePageLink = fileName
+                HomePageLink = fileName,
+                Options = options
             };
-            string helpPage = apiTemplate.TransformText();
+            var helpPage = apiTemplate.TransformText();
             WriteFile(apiModel.ApiDescription.GetFriendlyId() + ".html", helpPage);
         }
 
-        private void WriteFile(string fileName, String pageContent)
+        private void WriteFile(string fileName, string pageContent)
         {
+            var path = Path.Combine(OutputPath, fileName);
             Console.WriteLine("writing file: {0}", fileName);
-          if (!Directory.Exists(basePath))
-            Directory.CreateDirectory(basePath);
-            File.WriteAllText(Path.Combine(basePath, fileName), pageContent);
+            if (!Directory.Exists(OutputPath))
+            {
+                Directory.CreateDirectory(OutputPath);
+            }
+
+            File.WriteAllText(path, pageContent);
         }
     }
 }

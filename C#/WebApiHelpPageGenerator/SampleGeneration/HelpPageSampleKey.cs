@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Http.Headers;
@@ -11,25 +11,36 @@ namespace WebApiHelpPage
     public class HelpPageSampleKey
     {
         /// <summary>
-        /// Creates a new <see cref="HelpPageSampleKey"/> based on media type and CLR type.
+        /// Creates a new <see cref="HelpPageSampleKey"/> based on media type.
         /// </summary>
         /// <param name="mediaType">The media type.</param>
-        /// <param name="type">The CLR type.</param>
-        public HelpPageSampleKey(MediaTypeHeaderValue mediaType, Type type)
+        public HelpPageSampleKey(MediaTypeHeaderValue mediaType)
         {
             if (mediaType == null)
             {
                 throw new ArgumentNullException("mediaType");
             }
+
+            ActionName = string.Empty;
+            ControllerName = string.Empty;
+            MediaType = mediaType;
+            ParameterNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="HelpPageSampleKey"/> based on media type and CLR type.
+        /// </summary>
+        /// <param name="mediaType">The media type.</param>
+        /// <param name="type">The CLR type.</param>
+        public HelpPageSampleKey(MediaTypeHeaderValue mediaType, Type type)
+            : this(mediaType)
+        {
             if (type == null)
             {
                 throw new ArgumentNullException("type");
             }
-            ControllerName = string.Empty;
-            ActionName = string.Empty;
-            ParameterNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
             ParameterType = type;
-            MediaType = mediaType;
         }
 
         /// <summary>
@@ -57,6 +68,7 @@ namespace WebApiHelpPage
             {
                 throw new ArgumentNullException("parameterNames");
             }
+
             ControllerName = controllerName;
             ActionName = actionName;
             ParameterNames = new HashSet<string>(parameterNames, StringComparer.OrdinalIgnoreCase);
@@ -72,32 +84,14 @@ namespace WebApiHelpPage
         /// <param name="actionName">Name of the action.</param>
         /// <param name="parameterNames">The parameter names.</param>
         public HelpPageSampleKey(MediaTypeHeaderValue mediaType, SampleDirection sampleDirection, string controllerName, string actionName, IEnumerable<string> parameterNames)
+            : this(sampleDirection, controllerName, actionName, parameterNames)
         {
             if (mediaType == null)
             {
                 throw new ArgumentNullException("mediaType");
             }
-            if (!Enum.IsDefined(typeof(SampleDirection), sampleDirection))
-            {
-                throw new InvalidEnumArgumentException("sampleDirection", (int)sampleDirection, typeof(SampleDirection));
-            }
-            if (controllerName == null)
-            {
-                throw new ArgumentNullException("controllerName");
-            }
-            if (actionName == null)
-            {
-                throw new ArgumentNullException("actionName");
-            }
-            if (parameterNames == null)
-            {
-                throw new ArgumentNullException("parameterNames");
-            }
-            ControllerName = controllerName;
-            ActionName = actionName;
+
             MediaType = mediaType;
-            ParameterNames = new HashSet<string>(parameterNames, StringComparer.OrdinalIgnoreCase);
-            SampleDirection = sampleDirection;
         }
 
         /// <summary>
@@ -138,14 +132,14 @@ namespace WebApiHelpPage
 
         public override bool Equals(object obj)
         {
-            HelpPageSampleKey otherKey = obj as HelpPageSampleKey;
+            var otherKey = obj as HelpPageSampleKey;
             if (otherKey == null)
             {
                 return false;
             }
 
-            return String.Equals(ControllerName, otherKey.ControllerName, StringComparison.OrdinalIgnoreCase) &&
-                String.Equals(ActionName, otherKey.ActionName, StringComparison.OrdinalIgnoreCase) &&
+            return string.Equals(ControllerName, otherKey.ControllerName, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(ActionName, otherKey.ActionName, StringComparison.OrdinalIgnoreCase) &&
                 (MediaType == otherKey.MediaType || (MediaType != null && MediaType.Equals(otherKey.MediaType))) &&
                 ParameterType == otherKey.ParameterType &&
                 SampleDirection == otherKey.SampleDirection &&
@@ -154,7 +148,7 @@ namespace WebApiHelpPage
 
         public override int GetHashCode()
         {
-            int hashCode = ControllerName.ToUpperInvariant().GetHashCode() ^ ActionName.ToUpperInvariant().GetHashCode();
+            var hashCode = ControllerName.ToUpperInvariant().GetHashCode() ^ ActionName.ToUpperInvariant().GetHashCode();
             if (MediaType != null)
             {
                 hashCode ^= MediaType.GetHashCode();
@@ -167,7 +161,7 @@ namespace WebApiHelpPage
             {
                 hashCode ^= ParameterType.GetHashCode();
             }
-            foreach (string parameterName in ParameterNames)
+            foreach (var parameterName in ParameterNames)
             {
                 hashCode ^= parameterName.ToUpperInvariant().GetHashCode();
             }

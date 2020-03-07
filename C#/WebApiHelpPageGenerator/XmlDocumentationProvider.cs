@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -27,16 +27,16 @@ namespace WebApiHelpPage
             {
                 throw new ArgumentNullException("documentPath");
             }
-            XPathDocument xpath = new XPathDocument(documentPath);
+            var xpath = new XPathDocument(documentPath);
             _documentNavigator = xpath.CreateNavigator();
         }
-      
+
         public virtual string GetDocumentation(HttpActionDescriptor actionDescriptor)
         {
-            XPathNavigator methodNode = GetMethodNode(actionDescriptor);
+            var methodNode = GetMethodNode(actionDescriptor);
             if (methodNode != null)
             {
-                XPathNavigator summaryNode = methodNode.SelectSingleNode("summary");
+                var summaryNode = methodNode.SelectSingleNode("summary");
                 if (summaryNode != null)
                 {
                     return summaryNode.Value.Trim();
@@ -48,14 +48,14 @@ namespace WebApiHelpPage
 
         public virtual string GetDocumentation(HttpParameterDescriptor parameterDescriptor)
         {
-            ReflectedHttpParameterDescriptor reflectedParameterDescriptor = parameterDescriptor as ReflectedHttpParameterDescriptor;
+            var reflectedParameterDescriptor = parameterDescriptor as ReflectedHttpParameterDescriptor;
             if (reflectedParameterDescriptor != null)
             {
-                XPathNavigator methodNode = GetMethodNode(reflectedParameterDescriptor.ActionDescriptor);
+                var methodNode = GetMethodNode(reflectedParameterDescriptor.ActionDescriptor);
                 if (methodNode != null)
                 {
-                    string parameterName = reflectedParameterDescriptor.ParameterInfo.Name;
-                    XPathNavigator parameterNode = methodNode.SelectSingleNode(String.Format(CultureInfo.InvariantCulture, _parameterExpression, parameterName));
+                    var parameterName = reflectedParameterDescriptor.ParameterInfo.Name;
+                    var parameterNode = methodNode.SelectSingleNode(string.Format(CultureInfo.InvariantCulture, _parameterExpression, parameterName));
                     if (parameterNode != null)
                     {
                         return parameterNode.Value.Trim();
@@ -68,10 +68,10 @@ namespace WebApiHelpPage
 
         private XPathNavigator GetMethodNode(HttpActionDescriptor actionDescriptor)
         {
-            ReflectedHttpActionDescriptor reflectedActionDescriptor = actionDescriptor as ReflectedHttpActionDescriptor;
+            var reflectedActionDescriptor = actionDescriptor as ReflectedHttpActionDescriptor;
             if (reflectedActionDescriptor != null)
             {
-                string selectExpression = String.Format(CultureInfo.InvariantCulture, _methodExpression, GetMemberName(reflectedActionDescriptor.MethodInfo));
+                var selectExpression = string.Format(CultureInfo.InvariantCulture, _methodExpression, GetMemberName(reflectedActionDescriptor.MethodInfo));
                 return _documentNavigator.SelectSingleNode(selectExpression);
             }
 
@@ -80,12 +80,12 @@ namespace WebApiHelpPage
 
         private static string GetMemberName(MethodInfo method)
         {
-            string name = String.Format(CultureInfo.InvariantCulture, "{0}.{1}", method.DeclaringType.FullName, method.Name);
-            ParameterInfo[] parameters = method.GetParameters();
+            var name = string.Format(CultureInfo.InvariantCulture, "{0}.{1}", method.DeclaringType.FullName, method.Name);
+            var parameters = method.GetParameters();
             if (parameters.Length != 0)
             {
-                string[] parameterTypeNames = parameters.Select(param => GetTypeName(param.ParameterType)).ToArray();
-                name += String.Format(CultureInfo.InvariantCulture, "({0})", String.Join(",", parameterTypeNames));
+                var parameterTypeNames = parameters.Select(param => GetTypeName(param.ParameterType)).ToArray();
+                name += string.Format(CultureInfo.InvariantCulture, "({0})", string.Join(",", parameterTypeNames));
             }
 
             return name;
@@ -96,14 +96,14 @@ namespace WebApiHelpPage
             if (type.IsGenericType)
             {
                 // Format the generic type name to something like: Generic{System.Int32,System.String}
-                Type genericType = type.GetGenericTypeDefinition();
-                Type[] genericArguments = type.GetGenericArguments();
-                string typeName = genericType.FullName;
+                var genericType = type.GetGenericTypeDefinition();
+                var genericArguments = type.GetGenericArguments();
+                var typeName = genericType.FullName;
 
                 // Trim the generic parameter counts from the name
                 typeName = typeName.Substring(0, typeName.IndexOf('`'));
-                string[] argumentTypeNames = genericArguments.Select(t => GetTypeName(t)).ToArray();
-                return String.Format(CultureInfo.InvariantCulture, "{0}{{{1}}}", typeName, String.Join(",", argumentTypeNames));
+                var argumentTypeNames = genericArguments.Select(t => GetTypeName(t)).ToArray();
+                return string.Format(CultureInfo.InvariantCulture, "{0}{{{1}}}", typeName, string.Join(",", argumentTypeNames));
             }
 
             return type.FullName;
@@ -112,12 +112,12 @@ namespace WebApiHelpPage
 
         public string GetDocumentation(HttpControllerDescriptor controllerDescriptor)
         {
-          throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public string GetResponseDocumentation(HttpActionDescriptor actionDescriptor)
         {
-          throw new NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

@@ -6,8 +6,10 @@ namespace WebApiHelpPageGenerator
 {
     public interface IOutputGenerator
     {
-        void GenerateIndex(Collection<ApiDescription> apis);
+        string OutputPath { get; set; }
 
-        void GenerateApiDetails(HelpPageApiModel apiModel);
+        void GenerateIndex(Collection<ApiDescription> apis, CommandLineOptions options);
+
+        void GenerateApiDetails(HelpPageApiModel apiModel, CommandLineOptions options);
     }
 }
